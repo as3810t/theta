@@ -15,6 +15,8 @@ sonarqube {
         property("sonar.projectKey", "as3810t_theta")
         property("sonar.organization", "as3810t")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml")
+        property("sonar.java.checkstyle.reportPaths", "subprojects/*/build/reports/checkstyle/*.xml")
     }
 }
 

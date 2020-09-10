@@ -170,13 +170,13 @@
         <module name="CatchParameterName"/>
         <module name="ClassTypeParameterName">
             <!-- Pascal case -->
-            <property name="format" value="([A-Z][a-z0-9]+)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?"/>
+            <property name="format" value="([A-Z][a-z0-9]*)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?"/>
         </module>
         <module name="ConstantName"/>
         <!--<module name="IllegalIdentifierName"/>-->
         <module name="InterfaceTypeParameterName">
             <!-- Pascal case -->
-            <property name="format" value="([A-Z][a-z0-9]+)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?"/>
+            <property name="format" value="([A-Z][a-z0-9]*)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?"/>
         </module>
         <!--<module name="LambdaParameterName"/>-->
         <module name="LocalFinalVariableName"/>
@@ -188,7 +188,7 @@
         <module name="ParameterName"/>
         <!--<module name="RecordTypeParameterName">-->
             <!-- Pascal case -->
-            <!--<property name="format" value="([A-Z][a-z0-9]+)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?"/>-->
+            <!--<property name="format" value="([A-Z][a-z0-9]*)((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?"/>-->
         <!--</module>-->
         <module name="StaticVariableName"/>
         <module name="TypeName"/>

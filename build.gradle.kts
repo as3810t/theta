@@ -10,16 +10,6 @@ buildscript {
     extra["execPath"] = "$libPath${File.pathSeparator}${System.getenv("PATH")}"
 }
 
-sonarqube {
-    properties {
-        property("sonar.projectKey", "as3810t_theta")
-        property("sonar.organization", "as3810t")
-        property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.coverage.jacoco.xmlReportPaths", "${project.rootDir}/build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml")
-        property("sonar.java.checkstyle.reportPaths", "${project.rootDir}/subprojects/*/build/reports/checkstyle/main.xml,${project.rootDir}/subprojects/*/build/reports/checkstyle/test.xml")
-    }
-}
-
 allprojects {
     group = "hu.bme.mit.inf.theta"
     version = "2.4.0"
@@ -31,6 +21,16 @@ allprojects {
         configFile = file("${project.rootDir}/checkstyle.xml")
         isIgnoreFailures = true
         isShowViolations = true
+    }
+
+    sonarqube {
+        properties {
+            property("sonar.projectKey", "as3810t_theta")
+            property("sonar.organization", "as3810t")
+            property("sonar.host.url", "https://sonarcloud.io")
+            property("sonar.coverage.jacoco.reportPaths", "build/jacoco/test.exec")
+            property("sonar.java.checkstyle.reportPaths", "build/reports/checkstyle/main.xml,build/reports/checkstyle/test.xml")
+        }
     }
 }
 

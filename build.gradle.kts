@@ -1,6 +1,8 @@
 plugins {
     base
     id("jacoco-common")
+    checkstyle
+    id("org.sonarqube").version("3.0")
 }
 
 buildscript {
@@ -8,11 +10,26 @@ buildscript {
     extra["execPath"] = "$libPath${File.pathSeparator}${System.getenv("PATH")}"
 }
 
+sonarqube {
+    properties {
+        property("sonar.projectKey", "as3810t_theta")
+        property("sonar.organization", "as3810t")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
+
 allprojects {
     group = "hu.bme.mit.inf.theta"
     version = "2.4.0"
 
     apply(from = rootDir.resolve("gradle/shared-with-buildSrc/mirrors.gradle.kts"))
+    apply(plugin = "checkstyle")
+
+    checkstyle {
+        configFile = file("${project.rootDir}/checkstyle.xml")
+        isIgnoreFailures = true
+        isShowViolations = true
+    }
 }
 
 evaluationDependsOnChildren()
@@ -53,5 +70,14 @@ tasks {
 
     check {
         dependsOn(test)
+    }
+
+    withType<Checkstyle>().configureEach {
+        includes.add("**/src/**")
+
+        reports {
+            xml.isEnabled = true
+            html.isEnabled = true
+        }
     }
 }
